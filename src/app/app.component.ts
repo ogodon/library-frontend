@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { AuthenticationService } from './authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  constructor (
+    private authenticationService: AuthenticationService
+  ) {}
+
+  ngOnInit() {
+    // Check if connected
+    this.authenticationService.whoami()
+    .subscribe(
+      user => console.log(user),
+      err => console.log(err)
+    );
+  }
+
   title = 'app';
 }
