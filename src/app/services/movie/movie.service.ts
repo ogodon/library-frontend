@@ -24,4 +24,17 @@ export class MovieService {
     return this.http.get(`${this.serverUrl}/movie/${id}`);
   }
 
+  update(movie): Observable<any> {
+    delete movie.createdByUser;
+    return this.http.put(`${this.serverUrl}/movie/${movie.id}`, movie);
+  }
+
+  create(movie): Observable<any> {
+    return this.http.post(`${this.serverUrl}/movie`, movie);
+  }
+
+  delete(movie): Observable<any> {
+    return this.http.delete(`${this.serverUrl}/movie/${movie.id}`);
+  }
+
 }

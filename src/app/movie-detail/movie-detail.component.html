@@ -1,0 +1,18 @@
+<div>
+  <label>Title</label>
+  <input [(ngModel)]="movie.title" placeholder="Title" />
+</div>
+<div>
+  <label>Author</label>
+  <input [(ngModel)]="movie.author" placeholder="Title" />
+</div>
+<div>
+  <label>Release year</label>
+  <input [(ngModel)]="movie.releaseYear" placeholder="Title" />
+</div>
+<div>
+  <button (click)="save()">Save</button>
+</div>
+<div>
+  <a routerLink="/movie/{{movie.id}}" class="title">Back</a>
+</div>

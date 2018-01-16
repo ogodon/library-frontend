@@ -1,0 +1,18 @@
+<div>
+  <label>Title</label>
+  <input #title />
+</div>
+<div>
+  <label>Author</label>
+  <input #author />
+</div>
+<div>
+  <label>Release year</label>
+  <input #releaseYear />
+</div>
+<div>
+    <button (click)="add(title.value, author.value, releaseYear.value);">Add</button>
+</div>
+<div>
+  <a routerLink="/movies" class="title">Back</a>
+</div>

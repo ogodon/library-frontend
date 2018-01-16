@@ -3,6 +3,6 @@
 </h2>
 <ul class="movies">
   <li *ngFor="let movie of movies">
-    <a routerLink="/movie/{{movie.id}}" class="title">{{movie.title}}</a> by <span class="author">{{movie.author}}</span>
+    <a routerLink="/movie/{{movie.id}}" class="title">{{movie.title}}</a> by <span class="author">{{movie.author}}</span> <button (click)="delete(movie)">Delete</button>
   </li>
 </ul>
