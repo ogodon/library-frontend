@@ -5,8 +5,6 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { User } from './user';
-
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -14,7 +12,7 @@ const httpOptions = {
 @Injectable()
 export class AuthenticationService {
 
-  private serverUrl = 'http://localhost/api';
+  private serverUrl = '/api';
 
   constructor(private http: HttpClient) { }
 

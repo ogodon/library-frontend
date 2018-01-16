@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AuthenticationService } from './authentication.service';
+import { AuthenticationService } from './services/authentication/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -21,5 +21,5 @@ export class AppComponent {
     );
   }
 
-  title = 'app';
+  title = 'Movie Library';
 }
