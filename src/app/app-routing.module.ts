@@ -5,9 +5,11 @@ import { MoviesComponent } from './movies/movies.component';
 import { MovieComponent } from './movie/movie.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { MovieAddComponent } from './movie-add/movie-add.component';
+import { SigninComponent } from './signin/signin.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/movies', pathMatch: 'full' },
+  { path: '', redirectTo: '/signin', pathMatch: 'full' },
+  { path: 'signin', component: SigninComponent },
   { path: 'movie/add', component: MovieAddComponent },
   { path: 'movie/:id', component: MovieComponent },
   { path: 'movie/:id/update', component: MovieDetailComponent },

@@ -1,0 +1,12 @@
+<div>
+  <label>Email</label>
+  <input #email />
+</div>
+<div>
+  <label>Password</label>
+  <input #password />
+</div>
+<div>
+    <button (click)="signin(email.value, password.value);">Add</button>
+</div>
+<div class="error">{{error}}</div>

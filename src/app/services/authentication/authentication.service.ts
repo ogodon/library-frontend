@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
+import JwtDecode from 'jwt-decode';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -16,16 +17,24 @@ export class AuthenticationService {
 
   constructor(private http: HttpClient) { }
 
-  whoami(): Observable<any> {
-    return this.http.get(`${this.serverUrl}/whoami`);
+  setJWT(token) {
+    localStorage.setItem('jwt', token);
   }
 
-  signin(email: string, password: string): Observable<any> {
+  getJWT() {
+    return localStorage.getItem('jwt');
+  }
+
+  getUser() {
+    return JwtDecode(this.getJWT());
+  }
+
+  signin(email: string, password: string) {
     return this.http.post(`${this.serverUrl}/signin`, { email, password }, httpOptions);
   }
 
-  signout(): Observable<any> {
-    return this.http.post(`${this.serverUrl}/signout`, {}, httpOptions);
+  signout() {
+    localStorage.removeItem('jwt');
   }
 
 }

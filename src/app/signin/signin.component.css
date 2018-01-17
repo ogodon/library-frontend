@@ -1,0 +1,10 @@
+.error {
+  color: red;
+}
+
+label {
+  text-align: right;
+  display: inline-block;
+  width: 130px;
+  padding-right: 10px;
+}
