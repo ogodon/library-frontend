@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { MovieService } from '../services/movie/movie.service';
+import { AuthenticationService } from '../services/authentication/authentication.service';
 
 @Component({
   selector: 'app-movies',
@@ -14,6 +15,7 @@ export class MoviesComponent implements OnInit {
 
   constructor(
     private movieService: MovieService,
+    private authenticationService: AuthenticationService,
     private router: Router
   ) { }
 

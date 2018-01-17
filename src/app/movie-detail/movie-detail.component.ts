@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { MovieService } from '../services/movie/movie.service';
+import { AuthenticationService } from '../services/authentication/authentication.service';
 
 @Component({
   selector: 'app-movie-detail',
@@ -15,11 +16,16 @@ export class MovieDetailComponent implements OnInit {
 
   constructor(
     private movieService: MovieService,
+    private authenticationService: AuthenticationService,
     private route: ActivatedRoute,
+    private router: Router,
     private location: Location
   ) { }
 
   ngOnInit() {
+    if(!this.authenticationService.getUser().adm) {
+      this.router.navigate(['/signin']);
+    }
     const id = +this.route.snapshot.paramMap.get('id');
     this.movieService.get(id)
     .subscribe(

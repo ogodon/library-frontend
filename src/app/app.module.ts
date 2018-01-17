@@ -14,6 +14,7 @@ import { MovieComponent } from './movie/movie.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { MovieAddComponent } from './movie-add/movie-add.component';
 import { SigninComponent } from './signin/signin.component';
+import { NavMenuComponent } from './nav-menu/nav-menu.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SigninComponent } from './signin/signin.component';
     MovieComponent,
     MovieDetailComponent,
     MovieAddComponent,
-    SigninComponent
+    SigninComponent,
+    NavMenuComponent
   ],
   imports: [
     BrowserModule,

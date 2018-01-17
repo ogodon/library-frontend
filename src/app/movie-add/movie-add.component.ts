@@ -1,22 +1,29 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { MovieService } from '../services/movie/movie.service';
+import { AuthenticationService } from '../services/authentication/authentication.service';
 
 @Component({
   selector: 'app-movie-add',
   templateUrl: './movie-add.component.html',
   styleUrls: ['./movie-add.component.css']
 })
-export class MovieAddComponent {
+export class MovieAddComponent implements OnInit {
 
   constructor(
     private movieService: MovieService,
-    private route: ActivatedRoute,
+    private authenticationService: AuthenticationService,
     private location: Location,
     private router: Router
   ) { }
+
+  ngOnInit() {
+    if(!this.authenticationService.getUser().adm) {
+      this.router.navigate(['/signin']);
+    }
+  }
 
   back() {
     this.location.back();

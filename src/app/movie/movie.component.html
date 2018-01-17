@@ -2,6 +2,6 @@
 <p>Author: {{movie.author}}</p>
 <p>Release year: {{movie.releaseYear}}</p>
 
-<div>
+<div *ngIf="authenticationService.getUser().adm">
   <a routerLink="/movie/{{movie.id}}/update" class="title">Edit</a>
 </div>

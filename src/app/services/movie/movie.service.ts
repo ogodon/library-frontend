@@ -37,7 +37,6 @@ export class MovieService {
   }
 
   update(movie): Observable<any> {
-    delete movie.createdByUser;
     return this.http.put(`${this.serverUrl}/movie/${movie.id}`, movie, { headers: this.getHttpHeaders() });
   }
 
