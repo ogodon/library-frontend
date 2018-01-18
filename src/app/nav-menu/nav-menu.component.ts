@@ -18,6 +18,10 @@ export class NavMenuComponent implements OnInit {
   ngOnInit() {
   }
 
+  goto(location) {
+    this.router.navigate([location]);
+  }
+
   signout() {
     this.authenticationService.signout();
     this.router.navigate(['/signin']);

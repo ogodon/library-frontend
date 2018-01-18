@@ -1,18 +1,24 @@
-<div>
-  <label>Title</label>
-  <input [(ngModel)]="movie.title" placeholder="Title" />
-</div>
-<div>
-  <label>Author</label>
-  <input [(ngModel)]="movie.author" placeholder="Title" />
-</div>
-<div>
-  <label>Release year</label>
-  <input [(ngModel)]="movie.releaseYear" placeholder="Title" />
-</div>
-<div>
-  <button (click)="save()">Save</button>
-</div>
-<div>
-  <a routerLink="/movie/{{movie.id}}" class="title">Back</a>
+<h2>
+  Edit {{movie.title}}
+</h2>
+<div class="center">
+  <form>
+    <div class="fieldset">
+      <label>Title</label>
+      <input [(ngModel)]="movie.title" placeholder="Title" name="title" />
+    </div>
+    <div class="fieldset">
+      <label>Author</label>
+      <input [(ngModel)]="movie.author" placeholder="Author" name="author" />
+    </div>
+    <div class="fieldset">
+      <label>Release year</label>
+      <input [(ngModel)]="movie.releaseYear" placeholder="2000" name="releaseYear" />
+    </div>
+    <div>
+      <button (click)="save()">Save</button>
+      <button (click)="back()">Back</button>
+    </div>
+    <div class="error">{{error}}</div>
+  </form>
 </div>

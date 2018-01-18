@@ -1,14 +1,19 @@
-<form>
-  <div>
+<h2>
+  Sign in
+</h2>
+<div class="center">
+  <form>
+    <div class="fieldset">
       <label>Email</label>
-      <input #email />
+      <input type="email" #email />
     </div>
-    <div>
+    <div class="fieldset">
       <label>Password</label>
-      <input type='password' #password />
+      <input type="password" #password />
     </div>
     <div>
-        <button (click)="signin(email.value, password.value);">Add</button>
+        <button (click)="signin(email.value, password.value);">Sign in</button>
     </div>
     <div class="error">{{error}}</div>
-</form>
+  </form>
+</div>

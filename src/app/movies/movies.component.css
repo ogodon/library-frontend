@@ -6,3 +6,29 @@
 .author {
   font-style: italic;
 }
+
+ul {
+  list-style-type: none;
+}
+
+
+table {
+  margin: auto;
+  width: 60%;
+  border-collapse: collapse;
+  border: 1px solid #D0D0D0;
+}
+
+.movie:hover {
+  background-color: #D0D0D0;
+}
+
+td, th {
+  padding: 2px 0 2px 10px;
+  border-bottom: 1px solid #D0D0D0;
+  text-align: left;
+}
+
+th {
+  background-color: #D0D0D0;
+}

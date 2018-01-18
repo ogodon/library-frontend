@@ -1,8 +1,22 @@
 <h2>
   List of movies
 </h2>
-<ul class="movies">
-  <li *ngFor="let movie of movies">
-    <a routerLink="/movie/{{movie.id}}" class="title">{{movie.title}}</a> by <span class="author">{{movie.author}}</span> <button *ngIf="authenticationService.getUser().adm" (click)="delete(movie)">Delete</button>
-  </li>
-</ul>
+<table *ngIf="movies.length > 0">
+  <tr>
+    <th>Title</th>
+    <th>Author</th>
+    <th *ngIf="authenticationService.getUser().adm"></th>
+  </tr>
+  <tr class="movie" *ngFor="let movie of movies">
+    <td>
+      <a routerLink="/movie/{{movie.id}}" class="title">{{movie.title}}</a>
+    </td>
+    <td>
+      {{movie.author}}
+    </td>
+    <td *ngIf="authenticationService.getUser().adm">
+      <button (click)="delete(movie)">Delete</button>
+    </td>
+  </tr>
+</table>
+<p class="center" *ngIf="movies.length === 0">Currently no movie in the list</p>

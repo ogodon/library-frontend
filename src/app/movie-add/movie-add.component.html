@@ -1,18 +1,24 @@
-<div>
-  <label>Title</label>
-  <input #title />
-</div>
-<div>
-  <label>Author</label>
-  <input #author />
-</div>
-<div>
-  <label>Release year</label>
-  <input #releaseYear />
-</div>
-<div>
-    <button (click)="add(title.value, author.value, releaseYear.value);">Add</button>
-</div>
-<div>
-  <a routerLink="/movies" class="title">Back</a>
+<h2>
+  Add a new movie
+</h2>
+<div class="center">
+  <form>
+    <div class="fieldset">
+      <label>Title</label>
+      <input #title />
+    </div>
+    <div class="fieldset">
+      <label>Author</label>
+      <input #author />
+    </div>
+    <div class="fieldset">
+      <label>Release year</label>
+      <input #releaseYear />
+    </div>
+    <div>
+      <button (click)="add(title.value, author.value, releaseYear.value)">Add</button>
+      <button (click)="back()">Back</button>
+    </div>
+    <div class="error">{{error}}</div>
+  </form>
 </div>

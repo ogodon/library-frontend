@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { MovieService } from '../services/movie/movie.service';
@@ -18,8 +18,13 @@ export class MovieComponent implements OnInit {
     private movieService: MovieService,
     private authenticationService: AuthenticationService,
     private route: ActivatedRoute,
+    private router: Router,
     private location: Location
   ) { }
+
+  edit(movie) {
+    this.router.navigate([`/movie/${movie.id}/update`]);
+  }
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');

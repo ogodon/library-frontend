@@ -1,7 +1,9 @@
 <h2>{{movie.title}}</h2>
-<p>Author: {{movie.author}}</p>
-<p>Release year: {{movie.releaseYear}}</p>
-
-<div *ngIf="authenticationService.getUser().adm">
-  <a routerLink="/movie/{{movie.id}}/update" class="title">Edit</a>
+<div class="center">
+  <div class="movie-detail">
+    <p>Title: {{movie.title}}</p>
+    <p>Author: {{movie.author}}</p>
+    <p>Release year: {{movie.releaseYear}}</p>
+    <button (click)='edit(movie)'>Edit</button>
+  </div>
 </div>

@@ -19,6 +19,4 @@ export class AppComponent {
       this.router.navigate(['/signin']);
     }
   }
-
-  title = 'Movie Library';
 }

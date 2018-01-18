@@ -1,6 +1,10 @@
-<nav *ngIf="this.authenticationService.getJWT()">
-  <span>Logged as: {{this.authenticationService.getUser().email}}</span>
-  <a routerLink="/movies">Movies</a>
-  <a *ngIf="this.authenticationService.getUser().adm" routerLink="/movie/add">Add a movie</a>
-  <button (click)="signout()">Signout</button>
+<nav class="menu" *ngIf="this.authenticationService.getJWT()">
+  <p>
+    <span>Logged as: {{this.authenticationService.getUser().email}}</span>
+    <button (click)="signout()">Sign out</button>
+  </p>
+  <p>
+    <button (click)="goto('/movies')">Movies</button>
+    <button *ngIf="this.authenticationService.getUser().adm" (click)="goto('/movie/add')">Add a movie</button>
+  </p>
 </nav>
