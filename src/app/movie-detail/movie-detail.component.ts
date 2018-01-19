@@ -23,7 +23,7 @@ export class MovieDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if(!this.authenticationService.getUser().adm) {
+    if (!this.authenticationService.getUser().adm) {
       this.router.navigate(['/signin']);
     }
     const id = +this.route.snapshot.paramMap.get('id');

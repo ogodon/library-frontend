@@ -20,7 +20,7 @@ export class MovieAddComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if(!this.authenticationService.getUser().adm) {
+    if (!this.authenticationService.getUser().adm) {
       this.router.navigate(['/signin']);
     }
   }

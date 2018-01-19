@@ -8,14 +8,14 @@ import { AuthenticationService } from './services/authentication/authentication.
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   constructor (
     private authenticationService: AuthenticationService,
     private router: Router
   ) {}
 
   ngOnInit() {
-    if(!this.authenticationService.getJWT()) {
+    if (!this.authenticationService.getJWT()) {
       this.router.navigate(['/signin']);
     }
   }

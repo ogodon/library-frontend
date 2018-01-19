@@ -22,7 +22,7 @@ export class MovieService {
       'Content-Type': 'application/json'
     };
     const token = this.authenticationService.getJWT();
-    if(token) {
+    if (token) {
       headers['Authorization'] = `Bearer ${token}`;
     }
     return new HttpHeaders(headers);
