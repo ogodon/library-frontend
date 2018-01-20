@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Location } from '@angular/common';
 
 import { MovieService } from '../services/movie/movie.service';
 import { AuthenticationService } from '../services/authentication/authentication.service';
@@ -18,8 +17,7 @@ export class MovieComponent implements OnInit {
     private movieService: MovieService,
     private authenticationService: AuthenticationService,
     private route: ActivatedRoute,
-    private router: Router,
-    private location: Location
+    private router: Router
   ) { }
 
   edit(movie) {

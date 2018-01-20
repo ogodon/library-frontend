@@ -1,14 +1,45 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { of } from 'rxjs/observable/of';
 
 import { MovieComponent } from './movie.component';
+import { MovieService } from '../services/movie/movie.service';
+import { AuthenticationService } from '../services/authentication/authentication.service';
 
 describe('MovieComponent', () => {
   let component: MovieComponent;
   let fixture: ComponentFixture<MovieComponent>;
+  let mockAuthenticationService = {
+    getUser: () => {
+      return {
+        adm: false
+      };
+    }
+  };
+  let mockMovieService = {
+    get: jasmine.createSpy('movieGet').and.returnValue(of({ id: 1, title: 'title', author: 'author', releaseYear: '1990' }))
+  };
+  let mockRouter = {
+    navigate: jasmine.createSpy('navigate')
+  };
+  let mockActivatedRoute = {
+    snapshot: {
+      paramMap: {
+        get: jasmine.createSpy('get').and.returnValue('1')
+      }
+    }
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MovieComponent ]
+      declarations: [ MovieComponent ],
+      providers: [
+        { provide: MovieService, useValue: mockMovieService },
+        { provide: AuthenticationService, useValue: mockAuthenticationService },
+        { provide: Router, useValue: mockRouter },
+        { provide: ActivatedRoute, useValue: mockActivatedRoute }
+      ]
     })
     .compileComponents();
   }));

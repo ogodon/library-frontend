@@ -1,14 +1,34 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { SignupComponent } from './signup.component';
+import { AuthenticationService } from '../services/authentication/authentication.service';
 
 describe('SignupComponent', () => {
   let component: SignupComponent;
   let fixture: ComponentFixture<SignupComponent>;
+  let mockAuthenticationService = {
+    getUser: () => {
+      return {
+        adm: false
+      };
+    }
+  };
+  let mockRouter = {
+    navigate: jasmine.createSpy('navigate')
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SignupComponent ]
+      declarations: [ SignupComponent ],
+      providers: [
+        { provide: AuthenticationService, useValue: mockAuthenticationService },
+        { provide: Router, useValue: mockRouter }
+      ],
+      imports: [
+        FormsModule
+      ]
     })
     .compileComponents();
   }));

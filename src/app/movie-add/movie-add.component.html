@@ -16,8 +16,8 @@
       <input #releaseYear />
     </div>
     <div>
-      <button (click)="add(title.value, author.value, releaseYear.value)">Add</button>
-      <button (click)="back()">Back</button>
+      <button id='add' (click)="add(title.value, author.value, releaseYear.value)">Add</button>
+      <button id='back' (click)="back()">Back</button>
     </div>
     <div class="error">{{error}}</div>
   </form>
