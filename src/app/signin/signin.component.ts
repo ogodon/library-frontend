@@ -25,11 +25,15 @@ export class SigninComponent implements OnInit {
     this.router.navigate(['/movies']);
   }
 
+  signup() {
+    this.router.navigate(['/signup']);
+  }
+
   signin(email, password) {
     this.authenticationService.signin(email, password)
     .subscribe(
       response => this.signinSuccess(response),
-      () => this.error = 'Signin failed, the email and password do not match'
+      () => this.error = "Signin failed, the email and password do not match"
     );
   }
 

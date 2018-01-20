@@ -15,6 +15,7 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { MovieAddComponent } from './movie-add/movie-add.component';
 import { SigninComponent } from './signin/signin.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
     MovieDetailComponent,
     MovieAddComponent,
     SigninComponent,
-    NavMenuComponent
+    NavMenuComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

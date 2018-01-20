@@ -4,6 +4,6 @@
     <p>Title: {{movie.title}}</p>
     <p>Author: {{movie.author}}</p>
     <p>Release year: {{movie.releaseYear}}</p>
-    <button (click)='edit(movie)'>Edit</button>
+    <button *ngIf="this.authenticationService.getUser().adm" (click)='edit(movie)'>Edit</button>
   </div>
 </div>

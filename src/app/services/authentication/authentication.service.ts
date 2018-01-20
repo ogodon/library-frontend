@@ -33,6 +33,10 @@ export class AuthenticationService {
     return this.http.post(`${this.serverUrl}/signin`, { email, password }, httpOptions);
   }
 
+  signup(email: string, password: string) {
+    return this.http.post(`${this.serverUrl}/signup`, { email, password }, httpOptions);
+  }
+
   signout() {
     localStorage.removeItem('jwt');
   }

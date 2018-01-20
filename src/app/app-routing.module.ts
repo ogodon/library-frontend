@@ -6,10 +6,12 @@ import { MovieComponent } from './movie/movie.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { MovieAddComponent } from './movie-add/movie-add.component';
 import { SigninComponent } from './signin/signin.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/signin', pathMatch: 'full' },
   { path: 'signin', component: SigninComponent },
+  { path: 'signup', component: SignupComponent },
   { path: 'movie/add', component: MovieAddComponent },
   { path: 'movie/:id', component: MovieComponent },
   { path: 'movie/:id/update', component: MovieDetailComponent },

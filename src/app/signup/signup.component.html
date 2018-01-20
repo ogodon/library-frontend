@@ -1,0 +1,24 @@
+<h2>
+  Create your own account
+</h2>
+<div class="center">
+  <form>
+    <div class="fieldset">
+      <label>Email</label>
+      <input [(ngModel)]="user.email" name="email" />
+    </div>
+    <div class="fieldset">
+      <label>Password</label>
+      <input type="password" [(ngModel)]="user.password" name="password" />
+    </div>
+    <div class="fieldset">
+      <label>Password confirmation</label>
+      <input type="password" [(ngModel)]="user.passwordConfirmation" name="passwordConfirmation" />
+    </div>
+    <div>
+      <button (click)="signup()">Sign up</button>
+    </div>
+    <div class="error">{{error}}</div>
+    <div class="error">{{errorMessage()}}</div>
+  </form>
+</div>

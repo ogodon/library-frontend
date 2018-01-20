@@ -12,7 +12,8 @@
       <input type="password" #password />
     </div>
     <div>
-        <button (click)="signin(email.value, password.value);">Sign in</button>
+      <button (click)="signin(email.value, password.value);">Sign in</button>
+      <button (click)="signup();">Create an account</button>
     </div>
     <div class="error">{{error}}</div>
   </form>
