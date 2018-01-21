@@ -13,6 +13,8 @@ import { AuthenticationService } from '../services/authentication/authentication
 })
 export class MovieAddComponent implements OnInit {
 
+  private error;
+
   constructor(
     private movieService: MovieService,
     private authenticationService: AuthenticationService,
@@ -37,7 +39,10 @@ export class MovieAddComponent implements OnInit {
       releaseYear
     };
     this.movieService.create(movie)
-    .subscribe(() => this.router.navigate(['/movies']));
+    .subscribe(
+      () => this.router.navigate(['/movies']),
+      err => this.error = 'Release Year should be a number'
+    );
   }
 
 }

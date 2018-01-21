@@ -13,6 +13,7 @@ import { AuthenticationService } from '../services/authentication/authentication
 export class MovieDetailComponent implements OnInit {
 
   private movie = {};
+  private error;
 
   constructor(
     private movieService: MovieService,
@@ -29,8 +30,7 @@ export class MovieDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.movieService.get(id)
     .subscribe(
-      movie => this.movie = movie,
-      err => console.log(err)
+      movie => this.movie = movie
     );
   }
 
@@ -40,7 +40,10 @@ export class MovieDetailComponent implements OnInit {
 
   save() {
     this.movieService.update(this.movie)
-    .subscribe(() => this.back());
+    .subscribe(
+      () => this.back(),
+      err => this.error = 'Release Year should be a number'
+    );
   }
 
 }
