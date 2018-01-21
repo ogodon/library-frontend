@@ -11,24 +11,24 @@ import { AuthenticationService } from '../services/authentication/authentication
 describe('MovieAddComponent if not connected', () => {
   let component: MovieAddComponent;
   let fixture: ComponentFixture<MovieAddComponent>;
-  let mockAuthenticationService = {
+  const mockAuthenticationService = {
     getUser: () => {
       return {
         adm: false
       };
     }
   };
-  let mockMovieService = {
+  const mockMovieService = {
     create: (movie) => {
       return of(movie);
     }
   };
-  let mockRouter = {
+  const mockRouter = {
     navigate: jasmine.createSpy('navigate')
   };
-  let mockLocation = {
+  const mockLocation = {
     back: jasmine.createSpy('back')
-  }
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -62,22 +62,22 @@ describe('MovieAddComponent if not connected', () => {
 describe('MovieAddComponent if connected', () => {
   let component: MovieAddComponent;
   let fixture: ComponentFixture<MovieAddComponent>;
-  let mockAuthenticationService = {
+  const mockAuthenticationService = {
     getUser: () => {
       return {
         adm: true
       };
     }
   };
-  let mockMovieService = {
+  const mockMovieService = {
     create: jasmine.createSpy('create').and.returnValue(of({}))
   };
-  let mockRouter = {
+  const mockRouter = {
     navigate: jasmine.createSpy('navigate')
   };
-  let mockLocation = {
+  const mockLocation = {
     back: jasmine.createSpy('back')
-  }
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -110,7 +110,7 @@ describe('MovieAddComponent if connected', () => {
     component.back();
     expect(mockLocation.back).toHaveBeenCalled();
   });
-  
+
   it('should call movieService.create and redirect when adding a movie', () => {
     component.add('title', 'author', '1990');
     expect(mockMovieService.create).toHaveBeenCalled();

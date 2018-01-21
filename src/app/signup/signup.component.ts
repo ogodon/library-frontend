@@ -17,7 +17,7 @@ export class SignupComponent implements OnInit {
     email: '',
     password: '',
     passwordConfirmation: ''
-  }
+  };
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -29,7 +29,7 @@ export class SignupComponent implements OnInit {
       return 'Password and password confirmation should be identical';
     }
     if (!Validator.isEmail(this.user.email)) {
-      return 'Email should be valid'
+      return 'Email should be valid';
     }
     if (!Validator.isLength(this.user.password.trim(), { min: 8, max: undefined })) {
       return 'Password should have at least 8 characters';
@@ -52,7 +52,7 @@ export class SignupComponent implements OnInit {
     this.authenticationService.signup(this.user.email, this.user.password)
     .subscribe(
       response => this.signupSuccess(response),
-      () => this.error = "Signup failed, the email already exists"
+      () => this.error = 'Signup failed, the email already exists'
     );
   }
 

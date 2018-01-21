@@ -8,15 +8,15 @@ import { AuthenticationService } from '../services/authentication/authentication
 describe('SignupComponent', () => {
   let component: SignupComponent;
   let fixture: ComponentFixture<SignupComponent>;
-  let mockAuthenticationService = {
+  const mockAuthenticationService = {
     getUser: () => {
       return {
         adm: false
       };
     }
   };
-  let mockRouter = {
-    navigate: jasmine.createSpy('navigate')
+  const mockRouter = {
+    navigate: jasmine.createSpy('navigate');
   };
 
   beforeEach(async(() => {

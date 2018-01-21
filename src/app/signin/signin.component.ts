@@ -33,7 +33,7 @@ export class SigninComponent implements OnInit {
     this.authenticationService.signin(email, password)
     .subscribe(
       response => this.signinSuccess(response),
-      () => this.error = "Signin failed, the email and password do not match"
+      () => this.error = 'Signin failed, the email and password do not match'
     );
   }
 

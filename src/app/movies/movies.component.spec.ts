@@ -13,17 +13,17 @@ import { AuthenticationService } from '../services/authentication/authentication
 describe('MoviesComponent', () => {
   let component: MoviesComponent;
   let fixture: ComponentFixture<MoviesComponent>;
-  let mockRouter = {
+  const mockRouter = {
     navigate: jasmine.createSpy('navigate')
   };
-  let mockMovieService = {
+  const mockMovieService = {
     all: jasmine.createSpy('movieAll').and.returnValue(of([
       { id: 1, title: 'title', author: 'author', releaseYear: '1990' },
       { id: 2, title: 'title2', author: 'author2', releaseYear: '1992' }
     ])),
     delete: jasmine.createSpy('movieDelete').and.returnValue(of({}))
   };
-  let mockAuthenticationService = {
+  const mockAuthenticationService = {
     getUser: () => {
       return {
         adm: false

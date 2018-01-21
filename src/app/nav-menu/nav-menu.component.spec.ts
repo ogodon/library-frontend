@@ -7,7 +7,7 @@ import { AuthenticationService } from '../services/authentication/authentication
 describe('NavMenuComponent', () => {
   let component: NavMenuComponent;
   let fixture: ComponentFixture<NavMenuComponent>;
-  let mockAuthenticationService = {
+  const mockAuthenticationService = {
     getUser: () => {
       return {
         email: 'email@domain.ext',
@@ -17,7 +17,7 @@ describe('NavMenuComponent', () => {
     getJWT: () => 'token',
     signout: jasmine.createSpy('signout')
   };
-  let mockRouter = {
+  const mockRouter = {
     navigate: jasmine.createSpy('navigate')
   };
 

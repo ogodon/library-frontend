@@ -7,8 +7,17 @@ describe('library-frontend-new App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+  describe('Homepage', () => {
+    beforeEach(() => {
+      page.navigateTo('/');
+    });
+
+    it('should display the application title', () => {
+      page.navigateTo('/');
+      expect(page.getTitle()).toEqual('Movies Library');
+    });
+
+
   });
+
 });

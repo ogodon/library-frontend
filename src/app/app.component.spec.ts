@@ -8,13 +8,13 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { AuthenticationService } from './services/authentication/authentication.service';
 
 describe('AppComponent', () => {
-  let mockRouter = {
+  const mockRouter = {
     navigate: jasmine.createSpy('navigate')
   };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports:[
+      imports: [
         RouterTestingModule,
         HttpClientModule
       ],
@@ -52,7 +52,7 @@ describe('AppComponent', () => {
     app.ngOnInit();
     expect(mockRouter.navigate).toHaveBeenCalledWith(['/signin']);
   }));
-  
+
   it(`should authenticationService.getJWT to have been called once when ngOnInit() is called`, async(() => {
     const fixture = TestBed.createComponent(AppComponent);
 

@@ -12,24 +12,24 @@ import { AuthenticationService } from '../services/authentication/authentication
 describe('MovieDetailComponent', () => {
   let component: MovieDetailComponent;
   let fixture: ComponentFixture<MovieDetailComponent>;
-  let mockAuthenticationService = {
+  const mockAuthenticationService = {
     getUser: () => {
       return {
         adm: false
       };
     }
   };
-  let mockMovieService = {
+  const mockMovieService = {
     get: jasmine.createSpy('movieGet').and.returnValue(of({ id: 1, title: 'title', author: 'author', releaseYear: '1990' })),
     update: jasmine.createSpy('movieUpdate').and.returnValue(of({ id: 1, title: 'title', author: 'author', releaseYear: '1990' }))
   };
-  let mockRouter = {
+  const mockRouter = {
     navigate: jasmine.createSpy('navigate')
   };
-  let mockLocation = {
+  const mockLocation = {
     back: jasmine.createSpy('back')
   };
-  let mockActivatedRoute = {
+  const mockActivatedRoute = {
     snapshot: {
       paramMap: {
         get: jasmine.createSpy('get').and.returnValue('1')
