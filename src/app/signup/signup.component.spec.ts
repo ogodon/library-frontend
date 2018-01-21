@@ -16,7 +16,7 @@ describe('SignupComponent', () => {
     }
   };
   const mockRouter = {
-    navigate: jasmine.createSpy('navigate');
+    navigate: jasmine.createSpy('navigate')
   };
 
   beforeEach(async(() => {
