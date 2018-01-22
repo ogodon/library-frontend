@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { MovieService } from '../services/movie/movie.service';
@@ -12,13 +12,12 @@ import { AuthenticationService } from '../services/authentication/authentication
 })
 export class MovieDetailComponent implements OnInit {
 
-  private movie = {};
+  @Input() movie;
   private error;
 
   constructor(
     private movieService: MovieService,
     private authenticationService: AuthenticationService,
-    private route: ActivatedRoute,
     private router: Router,
     private location: Location
   ) { }
@@ -27,11 +26,6 @@ export class MovieDetailComponent implements OnInit {
     if (!this.authenticationService.getUser().adm) {
       this.router.navigate(['/signin']);
     }
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.movieService.get(id)
-    .subscribe(
-      movie => this.movie = movie
-    );
   }
 
   back() {

@@ -1,9 +1,12 @@
 <h2>{{movie.title}}</h2>
-<div class="center">
+<div *ngIf="!authenticationService.getUser().adm" class="center">
   <div class="movie-detail">
     <p>Title: {{movie.title}}</p>
     <p>Author: {{movie.author}}</p>
     <p>Release year: {{movie.releaseYear}}</p>
-    <button *ngIf="this.authenticationService.getUser().adm" (click)='edit(movie)'>Edit</button>
+  </div>
+  <div>
+    <button (click)="back()">Back</button>
   </div>
 </div>
+<app-movie-detail *ngIf="authenticationService.getUser().adm" [movie]="movie"></app-movie-detail>

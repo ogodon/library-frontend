@@ -1,9 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { of } from 'rxjs/observable/of';
 
 import { MovieComponent } from './movie.component';
+import { MovieDetailComponent } from '../movie-detail/movie-detail.component';
 import { MovieService } from '../services/movie/movie.service';
 import { AuthenticationService } from '../services/authentication/authentication.service';
 
@@ -30,15 +32,19 @@ describe('MovieComponent', () => {
       }
     }
   };
+  const mockLocation = {
+    back: jasmine.createSpy('back')
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MovieComponent ],
+      declarations: [ MovieComponent, MovieDetailComponent ],
       providers: [
         { provide: MovieService, useValue: mockMovieService },
         { provide: AuthenticationService, useValue: mockAuthenticationService },
         { provide: Router, useValue: mockRouter },
-        { provide: ActivatedRoute, useValue: mockActivatedRoute }
+        { provide: ActivatedRoute, useValue: mockActivatedRoute },
+        { provide: Location, useValue: mockLocation }
       ]
     })
     .compileComponents();

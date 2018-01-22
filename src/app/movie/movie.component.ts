@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
+import { MovieDetailComponent } from '../movie-detail/movie-detail.component';
 import { MovieService } from '../services/movie/movie.service';
 import { AuthenticationService } from '../services/authentication/authentication.service';
 
@@ -17,7 +19,8 @@ export class MovieComponent implements OnInit {
     private movieService: MovieService,
     private authenticationService: AuthenticationService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) { }
 
   edit(movie) {
@@ -31,6 +34,10 @@ export class MovieComponent implements OnInit {
       movie => this.movie = movie,
       err => console.log(err)
     );
+  }
+
+  back() {
+    this.location.back();
   }
 
 }
