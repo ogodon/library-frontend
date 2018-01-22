@@ -12,7 +12,7 @@ const httpOptions = {
 @Injectable()
 export class AuthenticationService {
 
-  private serverUrl = '/api';
+  private serverUrl = 'http://localhost/api';
 
   constructor(private http: HttpClient) { }
 

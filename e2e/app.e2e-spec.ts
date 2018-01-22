@@ -1,3 +1,4 @@
+import { browser } from 'protractor';
 import { AppPage } from './app.po';
 
 describe('library-frontend-new App', () => {
@@ -16,8 +17,64 @@ describe('library-frontend-new App', () => {
       page.navigateTo('/');
       expect(page.getTitle()).toEqual('Movies Library');
     });
+  });
 
+  describe('Create an account', () => {
+    beforeEach(() => {
+      page.navigateTo('/');
+    });
 
+    it('should have a button to create an account', () => {
+      browser.wait(page.urlContains('/signin'), 5000);
+      expect(page.get('button', 1).getText()).toEqual('Create an account');
+    });
+
+    it('should redirect to /signup when clicking this button', () => {
+      page.get('button', 1).click();
+      expect(page.urlContains('/signup')).toBeTruthy();
+    });
+  });
+
+  describe('Create an account', () => {
+    beforeEach(() => {
+      page.sleep(2000);
+      page.navigateTo('/signin');
+      browser.waitForAngular();
+      page.sleep(3000);
+      page.get('button', 1).click();
+      browser.waitForAngular();
+      page.sleep(3000);
+    });
+
+    it('should display an error if email is not correct', () => {
+      page.get('input', 0).sendKeys('bad.email@domain');
+      expect(page.get('.error', 1).getText()).toEqual('Email should be valid');
+    });
+
+    it('should display an error if password and password confirmation are not the same', () => {
+      page.get('input', 0).sendKeys('right.email@domain.com');
+      page.get('input', 1).sendKeys('password');
+      page.get('input', 2).sendKeys('passwrod');
+      expect(page.get('.error', 1).getText()).toEqual('Password and password confirmation should be identical');
+    });
+
+    it('should display an error if password and confirmation are too short', () => {
+      page.get('input', 0).sendKeys('right.email@domain.com');
+      page.get('input', 1).sendKeys('passwd');
+      page.get('input', 2).sendKeys('passwd');
+      expect(page.get('.error', 1).getText()).toEqual('Password should have at least 8 characters');
+    });
+
+    it('should connect if all is ok', () => {
+      const email = `right.email.${Date.now()}@domain.com`;
+      page.get('input', 0).sendKeys(email);
+      page.get('input', 1).sendKeys('password');
+      page.get('input', 2).sendKeys('password');
+      page.get('button', 0).click();
+      browser.waitForAngular();
+      page.sleep(3000);
+      expect(page.get('span', 0).getText()).toEqual(`Logged as: ${email}`);
+    });
   });
 
 });

@@ -10,7 +10,7 @@ import { AuthenticationService } from '../authentication/authentication.service'
 @Injectable()
 export class MovieService {
 
-  private serverUrl = '/api';
+  private serverUrl = 'http://localhost/api';
 
   constructor(
     private http: HttpClient,

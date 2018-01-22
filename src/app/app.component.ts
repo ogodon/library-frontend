@@ -16,7 +16,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     if (!this.authenticationService.getJWT()) {
-      this.router.navigate(['/signin']);
+      setTimeout(() => {
+        if (!['/signin', '/signup'].includes(this.router.url)) {
+          this.router.navigate(['/signin']);
+        }
+      }, 0);
     }
   }
 }
