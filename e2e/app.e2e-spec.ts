@@ -40,10 +40,10 @@ describe('library-frontend-new App', () => {
       page.sleep(2000);
       page.navigateTo('/signin');
       browser.waitForAngular();
-      page.sleep(3000);
+      page.sleep(5000);
       page.get('button', 1).click();
       browser.waitForAngular();
-      page.sleep(3000);
+      page.sleep(5000);
     });
 
     it('should display an error if email is not correct', () => {
