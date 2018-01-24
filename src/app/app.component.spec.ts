@@ -1,4 +1,4 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, tick, fakeAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -9,7 +9,8 @@ import { AuthenticationService } from './services/authentication/authentication.
 
 describe('AppComponent', () => {
   const mockRouter = {
-    navigate: jasmine.createSpy('navigate')
+    navigate: jasmine.createSpy('navigate'),
+    url: '/movies'
   };
 
   beforeEach(async(() => {
@@ -41,7 +42,7 @@ describe('AppComponent', () => {
     expect(app.authenticationService).toBeDefined();
   }));
 
-  it(`should router.navigate to have been called once when ngOnInit() is called without json web token`, async(() => {
+  it(`should router.navigate to have been called once when ngOnInit() is called without json web token`, fakeAsync(() => {
     const fixture = TestBed.createComponent(AppComponent);
 
     const debugElement = fixture.debugElement;
@@ -50,6 +51,7 @@ describe('AppComponent', () => {
 
     const app = debugElement.componentInstance;
     app.ngOnInit();
+    tick(100);
     expect(mockRouter.navigate).toHaveBeenCalledWith(['/signin']);
   }));
 
