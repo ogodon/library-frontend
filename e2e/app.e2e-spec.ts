@@ -25,13 +25,29 @@ describe('library-frontend-new App', () => {
     });
 
     it('should have a button to create an account', () => {
-      browser.wait(page.urlContains('/signin'), 5000);
       expect(page.get('button', 1).getText()).toEqual('Create an account');
     });
 
     it('should redirect to /signup when clicking this button', () => {
       page.get('button', 1).click();
-      expect(page.urlContains('/signup')).toBeTruthy();
+      page.sleep(1000);
+      expect(browser.getCurrentUrl()).toContain('/signup');
+    });
+  });
+
+  describe('Try to reach /movies without been connected', () => {
+    beforeEach(() => {
+      page.sleep(2000);
+      page.navigateTo('/');
+      page.sleep(5000);
+    });
+
+    it('should go back to /signin', () => {
+      expect(browser.getCurrentUrl()).toContain('/signin');
+      page.sleep(2000);
+      page.navigateTo('/movies');
+      page.sleep(2000);
+      expect(browser.getCurrentUrl()).toContain('/signin');
     });
   });
 
@@ -72,9 +88,9 @@ describe('library-frontend-new App', () => {
       page.get('input', 2).sendKeys('password');
       page.get('button', 0).click();
       browser.waitForAngular();
-      page.sleep(3000);
+      page.sleep(5000);
+      expect(browser.getCurrentUrl()).toContain('/movies');
       expect(page.get('span', 0).getText()).toEqual(`Logged as: ${email}`);
     });
   });
-
 });

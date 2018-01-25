@@ -13,10 +13,6 @@ export class AppPage {
     return element.all(by.css(selector)).get(number);
   }
 
-  urlContains(url) {
-    return protractor.ExpectedConditions.urlContains(url);
-  }
-
   sleep(time) {
     browser.driver.sleep(time);
   }
