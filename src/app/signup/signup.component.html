@@ -5,20 +5,19 @@
   <form>
     <div class="fieldset">
       <label>Email</label>
-      <input [(ngModel)]="user.email" name="email" />
+      <input [(ngModel)]="user.email" name="email" (keyup)="setError()" />
     </div>
     <div class="fieldset">
       <label>Password</label>
-      <input type="password" [(ngModel)]="user.password" name="password" />
+      <input type="password" [(ngModel)]="user.password" name="password" (keyup)="setError()" />
     </div>
     <div class="fieldset">
       <label>Password confirmation</label>
-      <input type="password" [(ngModel)]="user.passwordConfirmation" name="passwordConfirmation" />
+      <input type="password" [(ngModel)]="user.passwordConfirmation" name="passwordConfirmation" (keyup)="setError()" />
     </div>
     <div>
       <button (click)="signup()">Sign up</button>
     </div>
     <div class="error">{{error}}</div>
-    <div class="error">{{errorMessage()}}</div>
   </form>
 </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import Validator from 'validator';
+import validator from 'validator';
 
 import { AuthenticationService } from '../services/authentication/authentication.service';
 
@@ -28,13 +28,17 @@ export class SignupComponent implements OnInit {
     if (this.user.password !== this.user.passwordConfirmation) {
       return 'Password and password confirmation should be identical';
     }
-    if (!Validator.isEmail(this.user.email)) {
+    if (!validator.isEmail(this.user.email)) {
       return 'Email should be valid';
     }
-    if (!Validator.isLength(this.user.password.trim(), { min: 8, max: undefined })) {
+    if (!validator.isLength(this.user.password.trim(), { min: 8, max: undefined })) {
       return 'Password should have at least 8 characters';
     }
     return '';
+  }
+
+  setError() {
+    this.error = this.errorMessage();
   }
 
   ngOnInit() {
@@ -47,6 +51,7 @@ export class SignupComponent implements OnInit {
 
   signup() {
     if (this.errorMessage() !== '') {
+      this.error = this.errorMessage();
       return;
     }
     this.authenticationService.signup(this.user.email, this.user.password)

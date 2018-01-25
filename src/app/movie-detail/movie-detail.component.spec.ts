@@ -1,3 +1,4 @@
+import { Component, NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
@@ -9,9 +10,17 @@ import { MovieDetailComponent } from './movie-detail.component';
 import { MovieService } from '../services/movie/movie.service';
 import { AuthenticationService } from '../services/authentication/authentication.service';
 
+@Component({
+  selector: 'test-component-wrapper',
+  template: '<movie-detail [movie]="movie"></movie-detail>'
+})
+class TestComponentWrapper {
+  product = { id: 1, title: 'title', author: 'author', releaseYear: '2000' };
+}
+
 describe('MovieDetailComponent', () => {
   let component: MovieDetailComponent;
-  let fixture: ComponentFixture<MovieDetailComponent>;
+  let fixture: ComponentFixture<TestComponentWrapper>;
   const mockAuthenticationService = {
     getUser: () => {
       return {
@@ -29,34 +38,27 @@ describe('MovieDetailComponent', () => {
   const mockLocation = {
     back: jasmine.createSpy('back')
   };
-  const mockActivatedRoute = {
-    snapshot: {
-      paramMap: {
-        get: jasmine.createSpy('get').and.returnValue('1')
-      }
-    }
-  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MovieDetailComponent ],
+      declarations: [ TestComponentWrapper, MovieDetailComponent ],
       providers: [
         { provide: MovieService, useValue: mockMovieService },
         { provide: AuthenticationService, useValue: mockAuthenticationService },
         { provide: Router, useValue: mockRouter },
-        { provide: Location, useValue: mockLocation },
-        { provide: ActivatedRoute, useValue: mockActivatedRoute }
+        { provide: Location, useValue: mockLocation }
       ],
       imports: [
         FormsModule
-      ]
+      ],
+      schemas: [ NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MovieDetailComponent);
-    component = fixture.componentInstance;
+    fixture = TestBed.createComponent(TestComponentWrapper);
+    component = fixture.debugElement.children[0].componentInstance;
     fixture.detectChanges();
   });
 
