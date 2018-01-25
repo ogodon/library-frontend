@@ -64,21 +64,21 @@ describe('library-frontend-new App', () => {
 
     it('should display an error if email is not correct', () => {
       page.get('input', 0).sendKeys('bad.email@domain');
-      expect(page.get('.error', 1).getText()).toEqual('Email should be valid');
+      expect(page.get('.error', 0).getText()).toEqual('Email should be valid');
     });
 
     it('should display an error if password and password confirmation are not the same', () => {
       page.get('input', 0).sendKeys('right.email@domain.com');
       page.get('input', 1).sendKeys('password');
       page.get('input', 2).sendKeys('passwrod');
-      expect(page.get('.error', 1).getText()).toEqual('Password and password confirmation should be identical');
+      expect(page.get('.error', 0).getText()).toEqual('Password and password confirmation should be identical');
     });
 
     it('should display an error if password and confirmation are too short', () => {
       page.get('input', 0).sendKeys('right.email@domain.com');
       page.get('input', 1).sendKeys('passwd');
       page.get('input', 2).sendKeys('passwd');
-      expect(page.get('.error', 1).getText()).toEqual('Password should have at least 8 characters');
+      expect(page.get('.error', 0).getText()).toEqual('Password should have at least 8 characters');
     });
 
     it('should connect if all is ok', () => {
