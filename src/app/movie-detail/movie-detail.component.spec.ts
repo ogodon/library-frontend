@@ -11,16 +11,16 @@ import { MovieService } from '../services/movie/movie.service';
 import { AuthenticationService } from '../services/authentication/authentication.service';
 
 @Component({
-  selector: 'test-component-wrapper',
+  selector: 'app-test-component-wrapper',
   template: '<movie-detail [movie]="movie"></movie-detail>'
 })
-class TestComponentWrapper {
+class TestWrapperComponent {
   product = { id: 1, title: 'title', author: 'author', releaseYear: '2000' };
 }
 
 describe('MovieDetailComponent', () => {
   let component: MovieDetailComponent;
-  let fixture: ComponentFixture<TestComponentWrapper>;
+  let fixture: ComponentFixture<TestWrapperComponent>;
   const mockAuthenticationService = {
     getUser: () => {
       return {
@@ -41,7 +41,7 @@ describe('MovieDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TestComponentWrapper, MovieDetailComponent ],
+      declarations: [ TestWrapperComponent, MovieDetailComponent ],
       providers: [
         { provide: MovieService, useValue: mockMovieService },
         { provide: AuthenticationService, useValue: mockAuthenticationService },
@@ -57,7 +57,7 @@ describe('MovieDetailComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TestComponentWrapper);
+    fixture = TestBed.createComponent(TestWrapperComponent);
     component = fixture.debugElement.children[0].componentInstance;
     fixture.detectChanges();
   });
